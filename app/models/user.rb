@@ -3,12 +3,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  enum campus: ['casa central', 'oriente', 'san joaquín', 'villarrica',
-                'fuera de campus']
-  enum uc_member_type: ['profesional', 'académico', 'administrativo',
-                        'estudiante de pregrado', 'novato', 'estudiante de magíster',
-                        'estudiante de doctorado', 'becado especialidades de salud',
-                        'postdoctorado', 'colaborador externo', 'visitante']
+  enum campus: ['Campus Casa Central', 'Campus Oriente', 'Campus San Joaquín',
+                'Campus Lo Contador', 'Campus Villarica', 'Actividad fuera del Campus']
+  enum uc_member_type: ['Profesional', 'Académico', 'Administrativo',
+                        'Estudiante Pregrado', 'Novato', 'Estudiante Magíster',
+                        'Estudiante Doctorado', 'Becado de Especialidades de Salud',
+                        'Postdoctorado', 'Colaborador Externo', 'Visitante']
+
+  def uc_username
+    email.split('@').first
+  end
 end
 
 # == Schema Information
