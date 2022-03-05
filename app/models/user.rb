@@ -17,6 +17,14 @@ end
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  uc_password            :string
+#  rut                    :string
+#  name                   :string
+#  phone_number           :string
+#  uc_member_type         :integer
+#  campus                 :integer
+#  campus_place           :string
+#  active                 :boolean
 #
 # Indexes
 #
