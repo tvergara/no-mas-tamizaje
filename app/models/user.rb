@@ -3,6 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  enum campus: ['casa central', 'oriente', 'san joaquín', 'villarrica',
+                'fuera de campus']
+  enum uc_member_type: ['profesional', 'académico', 'administrativo',
+                        'estudiante de pregrado', 'novato', 'estudiante de magíster',
+                        'estudiante de doctorado', 'becado especialidades de salud',
+                        'postdoctorado', 'colaborador externo', 'visitante']
 end
 
 # == Schema Information

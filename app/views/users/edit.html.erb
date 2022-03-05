@@ -1,0 +1,33 @@
+<%= form_for current_user do |f| %>
+  <p>
+    <%= f.label :uc_password %><br>
+    <%= f.text_field :uc_password %>
+  </p>
+  <p>
+    <%= f.label :rut %><br>
+    <%= f.text_field :rut %>
+  </p>
+  <p>
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number %>
+  </p>
+  <p>
+    <%= f.label :campus %><br>
+    <%= f.select :campus, User.campus.keys.to_a %>
+  </p>
+  <p>
+    <%= f.label :campus_place %><br>
+    <%= f.text_field :campus_place %>
+  </p>
+  <p>
+    <%= f.label :uc_member_type %><br>
+    <%= f.select :uc_member_type, User.uc_member_types.keys.to_a %>
+  </p>
+  <p>
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
