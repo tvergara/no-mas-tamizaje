@@ -422,6 +422,7 @@ GEM
 
 PLATFORMS
   -darwin-21
+  ruby
 
 DEPENDENCIES
   activeadmin (~> 2.9)
