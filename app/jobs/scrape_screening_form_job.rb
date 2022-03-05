@@ -18,8 +18,6 @@ class ScrapeScreeningFormJob < ApplicationJob
       set_no_covid
       @pincers.search('a:contains("Enviar")').click
       @pincers.element.switch_to.alert.accept
-
-      binding.pry
     end
   end
 

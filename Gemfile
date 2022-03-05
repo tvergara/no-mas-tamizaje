@@ -61,3 +61,5 @@ end
 group :production, :development, :test do
   gem 'tzinfo-data'
 end
+gem 'sidekiq'
+gem 'sidekiq-scheduler', '>= 3.0.1'

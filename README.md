@@ -79,6 +79,14 @@ To run system tests: `bin/rspec --tag type:system`
 
 ## Internal dependencies
 
+### Queue System
+
+For managing tasks in the background, this project uses [Sidekiq](https://github.com/mperham/sidekiq)
+
+### Scheduled Tasks
+
+To schedule recurring work at particular times or dates, this project uses [Sidekiq Scheduler](https://github.com/moove-it/sidekiq-scheduler)
+
 ### Authentication
 
 We are using the great [Devise](https://github.com/plataformatec/devise) library by [PlataformaTec](http://plataformatec.com.br/)
