@@ -9,6 +9,7 @@ class User < ApplicationRecord
                         'Estudiante Pregrado', 'Novato', 'Estudiante Magíster',
                         'Estudiante Doctorado', 'Becado de Especialidades de Salud',
                         'Postdoctorado', 'Colaborador Externo', 'Visitante']
+  has_many :scraping_days, class_name: 'UserScrapingDay', dependent: :destroy
 
   def uc_username
     email.split('@').first
