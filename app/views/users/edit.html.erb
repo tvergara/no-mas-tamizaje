@@ -27,6 +27,13 @@
     <%= f.label :active %><br>
     <%= f.check_box :active %>
   </p>
+  <div class="field">
+    <%= f.label :scraping_days %>
+  </div>
+  <% UserScrapingDay.weekdays.keys.each do |day| %>
+    <%= day %>
+    <%= check_box_tag day, day, @current_scraping_days.include?(day) %>
+  <% end %>
   <p>
     <%= f.submit %>
   </p>

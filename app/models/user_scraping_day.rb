@@ -1,6 +1,6 @@
 class UserScrapingDay < ApplicationRecord
   belongs_to :user
-  enum weekday: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado']
+  enum weekday: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
 end
 
 # == Schema Information
