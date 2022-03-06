@@ -33,5 +33,26 @@ ActiveAdmin.register User do
         |user| user.scraping_days.map(&:weekday)
       end
     end
+
+    panel 'Fill Form Intents' do
+      table_for resource.scraping_intents.sort_by(&:created_at).reverse! do
+        column :id
+        column :state
+        column :error_category
+        column :created_at
+        column :link do |intent|
+          link_to 'link', admin_fill_screening_form_intent_path(intent.id)
+        end
+      end
+    end
+  end
+
+  action_item only: :show do
+    link_to 'Fill Screening Form', fill_form_intent_admin_user_path(resource.id), method: :post
+  end
+
+  member_action :fill_form_intent, method: :post do
+    ScrapeScreeningFormJob.perform_later(resouce.id)
+    redirect_to resource_path, notice: 'Filling Screening Form'
   end
 end
