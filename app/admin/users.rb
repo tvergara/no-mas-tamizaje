@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :id, :email
+  permit_params :id, :email, :campus, :campus_place, :uc_member_type, :active
 
   index do
     id_column
