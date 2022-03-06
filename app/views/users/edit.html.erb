@@ -31,8 +31,10 @@
     <%= f.label :scraping_days %>
   </div>
   <% UserScrapingDay.weekdays.keys.each do |day| %>
-    <%= day %>
-    <%= check_box_tag day, day, @current_scraping_days.include?(day) %>
+    <div>
+      <%= day %>
+      <%= check_box_tag day, day, @current_scraping_days.include?(day) %>
+    </div>
   <% end %>
   <p>
     <%= f.submit %>

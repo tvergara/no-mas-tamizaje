@@ -1,0 +1,26 @@
+<h1> Tus datos </h1>
+<div>
+  <h3> Mail UC </h3>
+  <p><%= current_user.email %></p>
+</div>
+<div>
+  <h3> Contraseña UC </h3>
+  <p> ******* </p>
+</div>
+<div>
+  <h3> Campus </h3>
+  <p><%= current_user.campus %></p>
+</div>
+<div>
+  <h3> Lugar del Campus </h3>
+  <p><%= current_user.campus_place %></p>
+</div>
+<div>
+  <h3> Tipo de miembro UC </h3>
+  <p><%= current_user.uc_member_type %></p>
+</div>
+<div>
+  <h3> Días para sacar tamizaje </h3>
+  <p><%= current_user.scraping_days.map(&:weekday) %><p>
+</div>
+<a href=<%= edit_user_path(current_user) %>>Editar</a>
