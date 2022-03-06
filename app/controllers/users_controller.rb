@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def update
     current_user.update!(permitted_params)
     UpdateUserScrapingDaysJob.perform_now(current_user, weekdays_params.keys)
-    redirect_to user_path
+    redirect_to '/'
   end
   
   private
