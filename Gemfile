@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'aasm'
 gem 'activeadmin', '~> 2.9'
 gem 'activeadmin_addons'
 gem 'aws-sdk-s3', '~> 1.0'
@@ -17,6 +18,8 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
 gem 'rails-i18n'
 gem 'sass-rails', '>= 6'
 gem 'scout_apm'
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
 gem 'strong_migrations'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
@@ -61,5 +64,3 @@ end
 group :production, :development, :test do
   gem 'tzinfo-data'
 end
-gem 'sidekiq'
-gem 'sidekiq-scheduler', '>= 3.0.1'

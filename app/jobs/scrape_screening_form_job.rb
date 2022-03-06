@@ -10,6 +10,7 @@ class ScrapeScreeningFormJob < ApplicationJob
                       'label[for="switch_38"]']
   def perform(user_id)
     @user = User.find(user_id)
+    fill_form_intent = FillScreeningFormIntent.create!(user: @user)
 
     Pincers.for_webdriver :chrome do |pincers|
       @pincers = pincers
@@ -19,6 +20,13 @@ class ScrapeScreeningFormJob < ApplicationJob
       @pincers.search('a:contains("Enviar")').click
       @pincers.element.switch_to.alert.accept
     end
+
+    fill_form_intent.succeed! 
+  rescue StandardError => error
+    fill_form_intent.error_category = 'unknown'
+    fill_form_intent.error_detail = { message: error.message, backtrace: error.backtrace }.to_json
+    
+    fill_form_intent.fail!
   end
 
   private

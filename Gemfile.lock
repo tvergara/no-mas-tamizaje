@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (5.0.8)
+      concurrent-ruby (~> 1.0)
     actioncable (6.1.4.6)
       actionpack (= 6.1.4.6)
       activesupport (= 6.1.4.6)
@@ -451,6 +453,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   activeadmin (~> 2.9)
   activeadmin_addons
   annotate (~> 3.0)
@@ -490,7 +493,7 @@ DEPENDENCIES
   scout_apm
   shoulda-matchers
   sidekiq
-  sidekiq-scheduler (>= 3.0.1)
+  sidekiq-scheduler
   simplecov
   simplecov_linter_formatter (~> 0.2)
   simplecov_text_formatter
