@@ -54,7 +54,7 @@ ActiveAdmin.register User do
   end
 
   member_action :fill_form_intent, method: :post do
-    ScrapeScreeningFormJob.perform_later(resouce.id)
+    ScrapeScreeningFormJob.perform_later(resource.id)
     redirect_to resource_path, notice: 'Filling Screening Form'
   end
 end

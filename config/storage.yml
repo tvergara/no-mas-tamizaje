@@ -8,5 +8,5 @@ test:
 
 amazon:
   service: S3
-  region: <%= ENV['AWS_REGION'] %>
-  bucket: <%= ENV['S3_BUCKET'] %>
+  region: <%= ENV.fetch('AWS_REGION', 'us-east-1') %>
+  bucket: <%= ENV.fetch('S3_BUCKET', '') %>
