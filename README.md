@@ -1,6 +1,17 @@
 # No Mas Tamizaje 
 This is a Rails application, initially generated using [Potassium](https://github.com/platanus/potassium) by Platanus.
 
+# Warning :warning:
+This application needs your UC credentials. This is sensible information, so therefore, it is strongly recommended that you self-host the project.
+
+If you do not want to self-host (and you trust me), you can use my application at tamizaje.herokuapp.com
+
+## Self-hosting information
+Everything is setup to be hosted in Heroku.
+
+You have to make sure you have the `WD_CHROME_PATH` and the proper buildpacks.
+![heroku-config](./github/heroku-config.png "heroku")
+
 ## Local installation
 
 Assuming you've just cloned the repo, run this script to setup the project in your
