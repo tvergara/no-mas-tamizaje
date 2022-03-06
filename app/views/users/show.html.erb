@@ -1,26 +1,71 @@
-<h1> Tus datos </h1>
-<div>
-  <h3> Mail UC </h3>
-  <p><%= current_user.email %></p>
+<div class="flex flex-col items-center p-5">
+  <div class="flex flex-col w-2/3">
+    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
+        <div class="overflow-hidden shadow-md sm:rounded-lg">
+          <table class="min-w-full">
+            <thead class="bg-gray-50 dark:bg-gray-700">
+              <tr>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                Tus datos de tamizaje
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase text-blue-400">
+                <a href="/edit">Editar</a>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  Mail UC
+                </td>
+                <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                  <%= current_user.email %>
+                </td>
+              </tr>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  Contraseña UC
+                </td>
+                <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                  ********
+                </td>
+              </tr>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  Campus
+                </td>
+                <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                  <%= current_user.campus %>
+                </td>
+              </tr>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  Lugar del Campus
+                </td>
+                <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                  <%= current_user.campus_place %>
+                </td>
+              </tr>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  Tipo de miembro UC
+                </td>
+                <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                  <%= current_user.uc_member_type %>
+                </td>
+              </tr>
+              <tr class="bg-white dark:bg-gray-800">
+                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  Días de tamizaje
+                </td>
+                <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                  <%= current_user.scraping_days.map(&:weekday).join(', ') %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div>
-  <h3> Contraseña UC </h3>
-  <p> ******* </p>
-</div>
-<div>
-  <h3> Campus </h3>
-  <p><%= current_user.campus %></p>
-</div>
-<div>
-  <h3> Lugar del Campus </h3>
-  <p><%= current_user.campus_place %></p>
-</div>
-<div>
-  <h3> Tipo de miembro UC </h3>
-  <p><%= current_user.uc_member_type %></p>
-</div>
-<div>
-  <h3> Días para sacar tamizaje </h3>
-  <p><%= current_user.scraping_days.map(&:weekday) %><p>
-</div>
-<a href=<%= '/edit' %>>Editar</a>
