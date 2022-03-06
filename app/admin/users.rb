@@ -48,7 +48,9 @@ ActiveAdmin.register User do
   end
 
   action_item only: :show do
-    link_to 'Fill Screening Form', fill_form_intent_admin_user_path(resource.id), method: :post
+    if params[:id]
+      link_to 'Fill Screening Form', fill_form_intent_admin_user_path(resource&.id), method: :post
+    end
   end
 
   member_action :fill_form_intent, method: :post do
