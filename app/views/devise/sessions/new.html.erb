@@ -1,6 +1,9 @@
 <div class="flex flex-col items-center p-5">
   <div class="w-2/3">
     <h2 class="text-center text-lg">Iniciar Sesión</h2>
+    <p class="text-center text-sm text-gray-700">
+      Quieres que un bot te rellene el tamizaje los días que vas a la u?
+    </p>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
