@@ -11,6 +11,7 @@ class User < ApplicationRecord
                         'Postdoctorado', 'Colaborador Externo', 'Visitante']
   has_many :scraping_days, class_name: 'UserScrapingDay', dependent: :destroy
   scope :scrapes_today, -> { joins(:scraping_days).where('weekday = ?', Time.new.wday) }
+  scope :active, -> { where(active: true) }
   has_many :scraping_intents, class_name: 'FillScreeningFormIntent', dependent: :destroy
 
   def uc_username
