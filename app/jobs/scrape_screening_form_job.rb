@@ -19,6 +19,7 @@ class ScrapeScreeningFormJob < ApplicationJob
       set_no_covid
       @pincers.search('a:contains("Enviar")').click
       @pincers.element.switch_to.alert.accept
+      @pincers.search('div.success').text
     end
 
     fill_form_intent.succeed! 
