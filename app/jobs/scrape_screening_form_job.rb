@@ -10,44 +10,62 @@ class ScrapeScreeningFormJob < ApplicationJob
                       'label[for="switch_38"]']
   def perform(user_id)
     @user = User.find(user_id)
-    fill_form_intent = FillScreeningFormIntent.create!(user: @user)
+    @intent = FillScreeningFormIntent.create!(user: @user)
 
+    @intent.log('initializing pincers')
     Pincers.for_webdriver :chrome do |pincers|
+      @intent.log('pincers initialized')
       @pincers = pincers
       login
       set_user_info
       set_no_covid
-      @pincers.search('a:contains("Enviar")').click
-      @pincers.element.switch_to.alert.accept
-      @pincers.search('div.success').text
+      send_form
     end
 
-    fill_form_intent.succeed! 
+    @intent.succeed! 
   rescue StandardError => error
-    fill_form_intent.error_category = 'unknown'
-    fill_form_intent.error_detail = { message: error.message, backtrace: error.backtrace }.to_json
+    @intent.error_category = 'unknown'
+    @intent.error_detail = { message: error.message, backtrace: error.backtrace }.to_json
     
-    fill_form_intent.fail!
+    @intent.fail!
   end
 
   private
 
   def login
+    @intent.log('logging in')
     @pincers.goto 'https://formulariocovid19.uc.cl/accesouc/index.php'
+    @intent.log('log in loaded')
     @pincers.search('#username').set @user.uc_username
     @pincers.search('#password').set @user.uc_password
+    @intent.log('credentials entered')
     @pincers.search('.btn-submit').click
+    @intent.log('login button clicked')
   end
 
   def set_user_info
+    @intent.log('setting user info')
     @pincers.search('select[name="tipo_persona"]').set @user.uc_member_type
     @pincers.search('select[name="campus"]').set @user.campus
     @pincers.search('#lugar').set @user.campus_place
+    @intent.log('user info set')
   end
 
   def set_no_covid
+    @intent.log('setting no covid')
     NO_COVID_BUTTONS.each do |btn|
       @pincers.search(btn).click
     end
+    @intent.log('no covid set')
+  end
+
+  def send_form
+    @intent.log('sending form')
+    @pincers.search('a:contains("Enviar")').click
+    @intent.log('clicking alert')
+    @pincers.element.switch_to.alert.accept
+    @intent.log('alert accepted')
+    @pincers.search('div.success').text
+    @intent.log('successful form submission')
   end
 end

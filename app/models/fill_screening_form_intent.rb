@@ -14,6 +14,10 @@ class FillScreeningFormIntent < ApplicationRecord
       transitions from: :created, to: :succeeded
     end
   end
+
+  def log(message)
+    logs << message
+  end
 end
 
 # == Schema Information
@@ -27,6 +31,7 @@ end
 #  error_detail   :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  logs           :text             default([]), is an Array
 #
 # Indexes
 #
