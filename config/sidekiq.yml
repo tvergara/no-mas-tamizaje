@@ -4,5 +4,5 @@ production:
   - default
 :schedule:
    enqueue_daily_sraping:
-     cron: '0 7 * * *'
+     cron: '0 4 * * * America/Santiago'
      class: EnqueueDailyScrapingJob
