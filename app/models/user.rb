@@ -10,9 +10,10 @@ class User < ApplicationRecord
                         'Estudiante Doctorado', 'Becado de Especialidades de Salud',
                         'Postdoctorado', 'Colaborador Externo', 'Visitante']
   has_many :scraping_days, class_name: 'UserScrapingDay', dependent: :destroy
-  scope :scrapes_today, -> { joins(:scraping_days).where('weekday = ?', Time.new.wday) }
+  scope :scrapes_today, -> { joins(:scraping_days).where('weekday = ?', Time.zone.now.wday) }
   scope :active, -> { where(active: true) }
   has_many :scraping_intents, class_name: 'FillScreeningFormIntent', dependent: :destroy
+  encrypts :uc_password, migrating: true
 
   def uc_username
     email.split('@').first
@@ -39,6 +40,7 @@ end
 #  campus                 :integer
 #  campus_place           :string
 #  active                 :boolean
+#  uc_password_ciphertext :text
 #
 # Indexes
 #
