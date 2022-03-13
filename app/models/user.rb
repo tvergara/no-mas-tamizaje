@@ -13,7 +13,7 @@ class User < ApplicationRecord
   scope :scrapes_today, -> { joins(:scraping_days).where('weekday = ?', Time.zone.now.wday) }
   scope :active, -> { where(active: true) }
   has_many :scraping_intents, class_name: 'FillScreeningFormIntent', dependent: :destroy
-  encrypts :uc_password, migrating: true
+  encrypts :uc_password
 
   def uc_username
     email.split('@').first
@@ -32,7 +32,6 @@ end
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  uc_password            :string
 #  rut                    :string
 #  name                   :string
 #  phone_number           :string
